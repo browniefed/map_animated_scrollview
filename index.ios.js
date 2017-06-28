@@ -11,9 +11,14 @@ import {
   TouchableOpacity,
 } from "react-native";
 
-import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
+import MapView from "react-native-maps";
 
-const WonderWoman = { uri: "https://i.imgur.com/sNam9iJ.jpg" };
+const Images = [
+  { uri: "https://i.imgur.com/sNam9iJ.jpg" },
+  { uri: "https://i.imgur.com/N7rlQYt.jpg" },
+  { uri: "https://i.imgur.com/UDrH0wm.jpg" },
+  { uri: "https://i.imgur.com/Ka8kNST.jpg" }
+]
 
 const { width, height } = Dimensions.get("window");
 
@@ -30,7 +35,7 @@ export default class screens extends Component {
         },
         title: "Best Place",
         description: "This is the best place in Portland",
-        image: WonderWoman,
+        image: Images[0],
       },
       {
         coordinate: {
@@ -39,7 +44,7 @@ export default class screens extends Component {
         },
         title: "Second Best Place",
         description: "This is the second best place in Portland",
-        image: WonderWoman,
+        image: Images[1],
       },
       {
         coordinate: {
@@ -48,7 +53,7 @@ export default class screens extends Component {
         },
         title: "Third Best Place",
         description: "This is the third best place in Portland",
-        image: WonderWoman,
+        image: Images[2],
       },
       {
         coordinate: {
@@ -57,7 +62,7 @@ export default class screens extends Component {
         },
         title: "Fourth Best Place",
         description: "This is the fourth best place in Portland",
-        image: WonderWoman,
+        image: Images[3],
       },
     ],
     region: {
@@ -107,7 +112,7 @@ export default class screens extends Component {
       const inputRange = [
         (index - 1) * CARD_WIDTH,
         index * CARD_WIDTH,
-        (index + 1) * CARD_WIDTH + 1,
+        ((index + 1) * CARD_WIDTH),
       ];
       const scale = this.animation.interpolate({
         inputRange,
@@ -152,7 +157,7 @@ export default class screens extends Component {
         </MapView>
         <Animated.ScrollView
           horizontal
-          scrollEventThrottle={16}
+          scrollEventThrottle={1}
           showsHorizontalScrollIndicator={false}
           snapToInterval={CARD_WIDTH}
           onScroll={Animated.event(
