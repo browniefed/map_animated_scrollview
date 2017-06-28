@@ -171,7 +171,7 @@ export default class screens extends Component {
           contentContainerStyle={styles.endPadding}
         >
           {this.state.markers.map((marker, index) => (
-            <View style={styles.card}>
+            <View style={styles.card} key={index}>
               <Image
                 source={marker.image}
                 style={styles.cardImage}
