@@ -12,7 +12,6 @@ import {
 } from "react-native";
 
 import MapView, { PROVIDER_GOOGLE } from "react-native-maps";
-import WonderWoman2 from "./wonderwoman.jpg";
 
 const WonderWoman = { uri: "https://i.imgur.com/sNam9iJ.jpg" };
 
@@ -71,9 +70,7 @@ export default class screens extends Component {
 
   componentWillMount() {
     this.index = 0;
-    this.images = {};
     this.animation = new Animated.Value(0);
-    this.opacityAnimation = new Animated.Value(0);
   }
   componentDidMount() {
     // We should detect when scrolling has stopped then animate
@@ -179,7 +176,6 @@ export default class screens extends Component {
                 source={marker.image}
                 style={styles.cardImage}
                 resizeMode="cover"
-                ref={img => this.images[index] = img}
               />
               <View style={styles.textContent}>
                 <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
@@ -197,14 +193,6 @@ export default class screens extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
-  transitionContainer: {
-    backgroundColor: "#FFF",
-    padding: 10,
-  },
-  transitionImage: {
-    width: "100%",
     flex: 1,
   },
   scrollView: {
